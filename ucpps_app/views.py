@@ -31,7 +31,7 @@ import pickle
 import time
 
 
-df = pd.read_csv(r"C:\Users\tanup\OneDrive\Desktop\DataScienceProject-2020\UsedCarPricePredictionSystem\ucpps_app\Dataset\CleanedData.csv")   # Storing the CSV file into a dataframe
+df = pd.read_csv("ucpps_app/Dataset/CleanedData.csv")   # Storing the CSV file into a dataframe
 
 selectedFeatures = ['yearOfRegistration','powerPS','model','kilometer','monthOfRegistration','fuelType','brand','postalCode','vehicleType_0','vehicleType_1','vehicleType_2','vehicleType_3','vehicleType_4','vehicleType_5','vehicleType_6','vehicleType_7','gearbox_0','gearbox_1']
 
