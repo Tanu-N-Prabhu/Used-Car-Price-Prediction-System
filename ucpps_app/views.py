@@ -31,27 +31,27 @@ import pickle
 import time
 
 
-#df = pd.read_csv("ucpps_app/Dataset/CleanedData.csv")   # Storing the CSV file into a dataframe
+df = pd.read_csv("ucpps_app/Dataset/CleanedData.csv")   # Storing the CSV file into a dataframe
 
-#selectedFeatures = ['yearOfRegistration','powerPS','model','kilometer','monthOfRegistration','fuelType','brand','postalCode','vehicleType_0','vehicleType_1','vehicleType_2','vehicleType_3','vehicleType_4','vehicleType_5','vehicleType_6','vehicleType_7','gearbox_0','gearbox_1']
+selectedFeatures = ['yearOfRegistration','powerPS','model','kilometer','monthOfRegistration','fuelType','brand','postalCode','vehicleType_0','vehicleType_1','vehicleType_2','vehicleType_3','vehicleType_4','vehicleType_5','vehicleType_6','vehicleType_7','gearbox_0','gearbox_1']
 
-#X = df[selectedFeatures]
-#y = df['price']
+X = df[selectedFeatures]
+y = df['price']
 
 
 
-#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
 
-#X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=1) # 0.25 x 0.8 = 0.2
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=1) # 0.25 x 0.8 = 0.2
 
 # Feature Scaling
 
-#sc = StandardScaler()
-#X_train = sc.fit_transform(X_train)
-#X_test = sc.transform(X_test)
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
 
 # Fit the model
-#rfr = RandomForestRegressor(max_depth = 16, max_features = 10, min_samples_leaf = 2, n_estimators = 350).fit(X_train, y_train)
+rfr = RandomForestRegressor().fit(X_train, y_train)
 # Save the model to disk
 
 
@@ -111,9 +111,9 @@ def name(request):
 
             
 
-            #result = rfr.predict(a)
-            #predictedValue = pd.DataFrame(result)
-            #predictedValue = predictedValue.to_numpy()
+            result = rfr.predict(a)
+            predictedValue = pd.DataFrame(result)
+            predictedValue = predictedValue.to_numpy()
             finalPrice  = str(predictedValue).lstrip('[').rstrip(']')
             finalPrice = int(float(finalPrice))
             print(finalPrice)
