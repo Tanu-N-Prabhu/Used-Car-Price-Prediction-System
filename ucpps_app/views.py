@@ -51,7 +51,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fit the model
-rfr = DecisionTreeRegressor().fit(X_train, y_train)
+rfr = RandomForestRegressor(max_depth = 16, max_features = 10, min_samples_leaf = 2, n_estimators = 20).fit(X_train, y_train)
 # Save the model to disk
 
 
